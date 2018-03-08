@@ -34,6 +34,12 @@ var app = angular.module('appRoutes',['ngRoute'])
             controller:'sendMailController',
             authenticated: true
 
+         }).when('/viewMail',{
+
+            templateUrl: 'app/views/pages/mail/viewmail.html',
+            controller:'viewMailController',
+            authenticated: true
+
          }).when('/allbarlist',{
 
             templateUrl: 'app/views/pages/bars/allbarlist.html',

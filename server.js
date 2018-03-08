@@ -46,7 +46,7 @@ app.put('/bar/:id/update', bar.updateBarEarnings);
 
 app.get('/mail', mail.findAll);
 app.post('/mail', mail.addMail);
-app.delete('/mail', mail.deleteMail);
+app.delete('/mail/:id', mail.deleteMail);
 
 
 

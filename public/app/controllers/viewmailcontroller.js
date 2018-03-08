@@ -1,5 +1,5 @@
-var app = angular.module('mailListController', [])
-app.controller('mailListController', ['$scope', '$http', function($scope, $http) {
+var app = angular.module('viewMailController', [])
+app.controller('viewMailController', ['$scope', '$http', function($scope, $http) {
     // create a message to display in our view
     $scope.message = 'Mail List!';
 
@@ -32,20 +32,20 @@ app.controller('mailListController', ['$scope', '$http', function($scope, $http)
     }
     $scope.current = {};
 
-    $scope.update = function (mail) {
-        console.log(mail._id);
-        $scope.current = mail;
-    };
-
-    $scope.save = function () {
-        console.log($scope.current._id);
-        $http.put('mail/' + $scope.current._id + '/update', $scope.current).success(function (data) {
-
-            console.log(data);
-            findAll()
-            $scope.current = ""
-        }).error(function (data) {
-            console.log('Error: ' + data);
-        });
-    }
+    // $scope.update = function (mail) {
+    //     console.log(mail._id);
+    //     $scope.current = mail;
+    // };
+    //
+    // $scope.save = function () {
+    //     console.log($scope.current._id);
+    //     $http.put('mail/' + $scope.current._id + '/update', $scope.current).success(function (data) {
+    //
+    //         console.log(data);
+    //         findAll()
+    //         $scope.current = ""
+    //     }).error(function (data) {
+    //         console.log('Error: ' + data);
+    //     });
+    // }
 }]);

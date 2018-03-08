@@ -26,6 +26,7 @@
     <script src="app/controllers/stafflistcontroller.js"></script>
     <script src="app/controllers/addbarController.js"></script>
     <script src="app/controllers/sendMailController.js"></script>
+    <script src="app/controllers/viewMailController.js"></script>
     <!--<script src="app/controllers/emailCtrl.js"></script>-->
     <!--<script src="app/controllers/managementCtrl.js"></script>-->
 
@@ -72,7 +73,8 @@
                         <li><a href="/addStaff">Add a staff member</a></li>
                         <li><a href="/allstafflist">List of staff members</a></li>
                     </ul>
-                <li><a ng-show ="main.isLoggedIn" href="/sendMail"> Mail</a></li>
+                <li><a ng-show ="main.isLoggedIn" href="/sendMail"> Send Mail</a></li>
+                <li><a ng-show ="main.isLoggedIn" href="/viewMail"> View Mail</a></li>
                 <li><a ng-show ="main.isLoggedIn" href="#" ng-click="main.logout()">Log Out</a></li>
                 <li><a ng-show ="!main.isLoggedIn" href="/login">Login</a></li>
                 <li><a ng-show ="!main.isLoggedIn" href="/register">Register</a></li>
