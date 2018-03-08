@@ -61,3 +61,7 @@ body{
 #welcome{
     background-color: white;
 }
+
+#body{
+    resize: none;
+}

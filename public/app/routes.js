@@ -20,17 +20,21 @@ var app = angular.module('appRoutes',['ngRoute'])
 
             templateUrl: 'app/views/pages/bars/addbar.html',
             controller:'addbarController',
-            //controllerAs: 'patient', //nickname for controller
             authenticated: true
 
          }).when('/addStaff',{
 
             templateUrl: 'app/views/pages/staff/addstaff.html',
             controller:'addstaffcontroller',
-            //controllerAs: 'patient', //nickname for controller
             authenticated: true
 
-         }) .when('/allbarlist',{
+         }) .when('/sendMail',{
+
+            templateUrl: 'app/views/pages/mail/sendmail.html',
+            controller:'sendMailController',
+            authenticated: true
+
+         }).when('/allbarlist',{
 
             templateUrl: 'app/views/pages/bars/allbarlist.html',
             controller:'barlistController',
@@ -156,25 +160,26 @@ var app = angular.module('appRoutes',['ngRoute'])
     })
 
 app.run(['$rootScope', 'Auth', '$location' ,function ($rootScope, Auth, $location) {
-    $rootScope.$on('$routeChangeStart',  function (event, next, current) {
+    $rootScope.$on('$routeChangeStart', function (event, next, current) {
+        if (next.$$route !== undefined) {
 
-        if(next.$$route.authenticated == true){
-            if(!Auth.isLoggedIn()){
-                event.preventDefault();
-                $location.path('/')
-            }
+            if (next.$$route.authenticated == true) {
+                if (!Auth.isLoggedIn()) {
+                    event.preventDefault();
+                    $location.path('/')
+                }
 
-        }else if (next.$$route.authenticated == false){
+            } else if (next.$$route.authenticated == false) {
 
-            if(Auth.isLoggedIn()){
-                event.preventDefault();
-                $location.path('/profile')
-            }
+                if (Auth.isLoggedIn()) {
+                    event.preventDefault();
+                    $location.path('/profile')
+                }
 
-        }else console.log("does not matter")
+            } else console.log("does not matter")
 
-       // console.log(next.$$route.authenticated = true)
-       // console.log(Auth.isLoggedIn())
+            // console.log(next.$$route.authenticated = true)
+        }     // console.log(Auth.isLoggedIn())
     })
 
 

@@ -17,6 +17,7 @@ require('./app/passport/passport.js')(passport, FacebookStrategy, TwitterStrateg
 
 var staff = require('./app/routes/staffroutes')
 var bar = require('./app/routes/barroutes')
+var mail = require('./app/routes/mailroutes')
 
 
 
@@ -42,6 +43,10 @@ app.get('/bar/:id', bar.findOne);
 app.get('/bar', bar.findAll);
 app.post('/bar', bar.addBar);
 app.put('/bar/:id/update', bar.updateBarEarnings);
+
+app.get('/mail', mail.findAll);
+app.post('/mail', mail.addMail);
+app.delete('/mail', mail.deleteMail);
 
 
 

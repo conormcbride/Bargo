@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head valign="middle">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class = "page-header">
+    <h1>Enter the new Mail details below</h1>
+    <p>{{message}}</p>
+</div>
+<div ng-controller="sendMailController" >
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+
+
+            <form ng-submit="addMail(newMail)">
+
+                <div class="col-md-4" ><span style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle";>Recipient</div>
+                <div class="col-md-8" ><input class="form-control" type="text" name="sender" placeholder="Enter the Recipient" ng-model="newMail.sender" required = "true"></div>
+                <br><br><br>
+
+                <div class="col-md-4" ><span style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle";>Body</div>
+                <div class="col-md-8" ><textarea rows="20" cols="25" input class="form-control" id="body"  type="text" name="bodyOfMessage"  placeholder="Enter the Message you would like to send" ng-model="newMail.bodyOfMessage"  required = "true"> </textarea></div>
+                <br><br><br>
+
+
+                <div class="col-md-9" ></div><div class="col-md-3" ><button class ="btn btn-primary"  type = "submit">SEND MESSAGE</button></div>
+            </form>
+            <br> <br>  <br>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
