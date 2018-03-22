@@ -4,14 +4,15 @@
   "description": "template for webapp",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "cross-env NODE_ENV=test PORT=4000 && mocha test/routes/* "
+
   },
   "keywords": [
     "MEAN",
     "stack"
   ],
-  "author": "",
+  "author": "Conor Mc Bride",
   "license": "ISC",
   "dependencies": {
     "angular-xeditable": "^0.8.1",
@@ -26,6 +27,14 @@
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
     "passport-google-oauth": "^1.0.0",
+    "cookie-parser": "~1.4.3",
+    "cross-env": "^5.1.1",
     "passport-twitter": "^1.0.4"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^2.0.1",
+    "mocha": "^3.4.2",
+    "webpack": "^1.15.0"
   }
 }

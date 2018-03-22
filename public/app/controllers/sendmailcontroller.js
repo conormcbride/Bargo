@@ -1,5 +1,5 @@
-var app = angular.module('sendMailController', [])
-
+var app = angular.module('sendMailController', []);
+// var main = angular.module('mainController', []);
 app.controller('sendMailController', ['$scope', '$location', '$http', function($scope, $location, $http) {
 
 
@@ -8,7 +8,8 @@ app.controller('sendMailController', ['$scope', '$location', '$http', function($
         $http.post('/mail', newMail).success(function(data) {
             $scope.mails = data;
             $location.path('/allmaillist');
-            console.log(data);
+            console.log(newMail);
+            // console.log(main.username);
         })
             .error(function(data) {
                 console.log('Error: ' + data);
