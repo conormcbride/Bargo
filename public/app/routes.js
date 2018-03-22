@@ -28,6 +28,12 @@ var app = angular.module('appRoutes',['ngRoute'])
             controller:'addstaffcontroller',
             authenticated: true
 
+         }).when('/addFinance',{
+
+            templateUrl: 'app/views/pages/finance/addfinance.html',
+            controller:'financeController',
+            authenticated: true
+
          }) .when('/sendMail',{
 
             templateUrl: 'app/views/pages/mail/sendmail.html',
@@ -38,6 +44,12 @@ var app = angular.module('appRoutes',['ngRoute'])
 
             templateUrl: 'app/views/pages/mail/viewmail.html',
             controller:'viewMailController',
+            authenticated: true
+
+         }).when('/viewFinance',{
+
+            templateUrl: 'app/views/pages/finance/viewfinance.html',
+            controller:'viewFinanceController',
             authenticated: true
 
          }).when('/allbarlist',{

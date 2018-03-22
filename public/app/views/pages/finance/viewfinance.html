@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<div class="page-header">
+    <h1>Hello {{main.username}} from about route</h1>
+</div>
+<div ng-controller="viewFinanceController as list">
+    <div class="form-group search-finance">
+        <input class="form-control input-text" id="searchbar" ng-model="searchPosts" type="text" placeholder="Search">
+        <table align="center" valign="middle">
+            <tbody ng-repeat="finance in finances | orderBy:'-recipient'| filter: searchPosts">
+            <tr style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign=" middle
+            "; >
+            <td>
+                <!--<span class="glyphicon glyphicon-user"></span>-->
+                <!--<span  style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign=" middle";>-->
+                {{finance.income}}
+                <!--</span>-->
+            </td>
+            <td>
+                <!--<span class="glyphicon glyphicon-home"></span>-->
+                <!--<span style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign=" middle";>-->
+                {{finance.expenditure}}
+                <!--</span>-->
+            </td>
+            <td>
+                <!--<span class="glyphicon glyphicon-euro"></span>-->
+                {{finance.profit }}                &nbsp
+
+            </td><td>
+                <!--<span class="glyphicon glyphicon-euro"></span>-->
+                {{finance.barName }}                &nbsp
+
+            </td>
+            <td>
+
+                <!--<span style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign=" middle";>-->
+
+
+                <!--<button type="button" class="btn btn-default" ng-click="delete(mail._id)">-->
+                    <!--<span class="glyphicon glyphicon-remove"></span> Remove-->
+                <!--</button>-->
+                <!--<button type="button" class="btn btn-default" ng-click="update(bar.earnings)">-->
+                <!--<span class="glyphicon glyphicon-edit"></span> Edit-->
+                <!--</button>-->
+                <!--</span>-->
+            </td>
+            </tr>
+
+            </tbody>
+        </table>
+        <div>
+            <!--<tr>-->
+            <!--<td>-->
+            <!--<input type="number" id="earnings" valign="middle" ng-model="current.earnings" value="{{current.earnings}}"/>-->
+            <!--</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+            <!--<td>-->
+            <!--<button ng-click="save(current._id)">Save</button>-->
+            <!--</td>-->
+            <!--</tr>-->
+        </div>
+    </div>
+
+    </body>
+</html>
+
+
