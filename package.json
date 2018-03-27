@@ -6,7 +6,6 @@
   "scripts": {
     "start": "node server.js",
     "test": "cross-env NODE_ENV=test PORT=4000 && mocha test/routes/* "
-
   },
   "keywords": [
     "MEAN",
@@ -18,17 +17,19 @@
     "angular-xeditable": "^0.8.1",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
+    "cookie-parser": "~1.4.3",
+    "cross-env": "^5.1.1",
     "express": "^4.16.2",
     "express-session": "^1.15.6",
     "fs": "0.0.1-security",
     "jsonwebtoken": "^8.1.0",
     "mongoose": "^4.13.6",
+    "mongoose-title-case": "0.0.4",
+    "mongoose-validator": "^2.0.2",
     "morgan": "^1.9.0",
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
     "passport-google-oauth": "^1.0.0",
-    "cookie-parser": "~1.4.3",
-    "cross-env": "^5.1.1",
     "passport-twitter": "^1.0.4"
   },
   "devDependencies": {
