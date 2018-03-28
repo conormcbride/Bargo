@@ -3,10 +3,23 @@
     <h1>User Registration</h1>
 </div>
 
-<form ng-submit="register.regUser(regData)">
-    <label>Name:</label>
-    <input class="form-control" type="text" name="name", placeholder="please enter you name" ng-model="register.regData.name">
-    <br>
+<form name = "regForm" ng-submit="register.regUser(regData)" novalidate>
+   <div ng-class="{ 'has-success': (regForm.name.$valid && !regForm.name.$pristine)  , 'has-error':(!regForm.name.$valid && !regForm.name.$pristine)
+   ||(!regForm.name.$valid && !regForm.$submitted) }">
+
+       <label>Name:</label>
+       <input class="form-control" type="text" name="name", placeholder="please enter you name" ng-model="register.regData.name"
+              ng-pattern="/^(([a-zA-Z]{3,20})+[ ]+([a-zA-Z]{3,20})+)+$/" required>
+       <p class="help-block"ng-show="(!regForm.name.$pristine && regForm.name.$error.required) || (regForm.$submitted && regForm.name.$error.required)">This field is required</p>
+        <ul>
+
+            <li>Must have a space between first and last name</li>
+            <li>Must not contain any special charaters</li>
+            <li>Must not contain any numbers</li>
+            <li>Must be at least be 3 characters and no more than 20</li>
+        </ul>
+
+   </div><br>
     <label>Email:</label>
     <input class="form-control" type="text" name="email", placeholder="please enter email address" ng-model="register.regData.email">
     <br>
@@ -20,6 +33,10 @@
     <br>
     <button class="btn btn-primary" type="submit">Register</button>
 </form>
+<span><strong>Is this form pristine (new)</strong>{{regForm.$pristine}}</span><br>
+<span><strong>Does this form have errors</strong>{{regForm.$error}}</span><br>
+<span><strong>Was this form submitted</strong>{{regForm.$submitted}}</span><br>
+<span><strong>is this form valid</strong>{{regForm.$valid}}</span>
 
 <br>
 
