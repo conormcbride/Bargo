@@ -22,7 +22,13 @@
                 <br><br><br>
 
                 <div class="col-md-6" ><span style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle";> staff members role</div>
-                <div class="col-md-6" ><input class="form-control"  type="text" name="role"  placeholder="Enter the staff membbers role" ng-model="newStaff.role"  required = "true"> </div>
+                <div class="col-md-6" ><select input class="form-control"  type="text" name="role"  placeholder="Enter the staff membbers role"
+                                              ng-model="newStaff.role"  required = "true">
+
+                    <option value="Bar" >Bar Staff</option >
+                    <option  value="Manager" >Manager</option>
+                    <option value="Owner">Owner</option>
+                </select></div>
                 <br><br><br>
 
                 <div class="col-md-6" ><span style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle";>Staff memebers wage</div>
