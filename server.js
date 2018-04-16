@@ -18,7 +18,7 @@ require('./app/passport/passport.js')(passport, FacebookStrategy, TwitterStrateg
 var staff = require('./app/routes/staffroutes')
 var bar = require('./app/routes/barroutes')
 var mail = require('./app/routes/mailroutes')
-var finance = require('./app/routes/financeroute')
+// var finance = require('./app/routes/financeroute')
 
 
 
@@ -49,9 +49,9 @@ app.get('/mail', mail.findAll);
 app.post('/mail', mail.addMail);
 app.delete('/mail/:id', mail.deleteMail)
 
-
-app.get('/finance', finance.findAll);
-app.post('/finance', finance.newFinance);
+//
+// app.get('/finance', finance.findAll);
+// app.post('/finance', finance.newFinance);
 
 
 mongoose.connect('mongodb://localhost:27017/managementdb', function(err){

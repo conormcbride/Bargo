@@ -66,8 +66,8 @@ var UserSchema = new Schema({
     password: { type: String, required: true, validate: passwordValidator},
     email: { type: String, required: true, lowercase: true, unique: true, validate: emailValidator},
     // activate: { type: Boolean, required: true, default: false},
-    // temporaytoken: { type: String, required: true}
-
+    // temporaytoken: { type: String, required: true},
+    permission: { type: String, required: true, default: 'user' }
 
 });
 UserSchema.pre('save', function(next) {

@@ -22,19 +22,22 @@ var app = angular.module('appRoutes',['ngRoute'])
             controller:'addbarController',
             authenticated: true
 
-         }).when('/addStaff',{
+         })
+        .when('/addStaff',{
 
             templateUrl: 'app/views/pages/staff/addstaff.html',
             controller:'addstaffcontroller',
             authenticated: true
 
-         }).when('/addFinance',{
-
-            templateUrl: 'app/views/pages/finance/addfinance.html',
-            controller:'financeController',
-            authenticated: true
-
-         }) .when('/sendMail',{
+         })
+         //    .when('/addFinance',{
+         //
+         //    templateUrl: 'app/views/pages/finance/addfinance.html',
+         //    controller:'financeController',
+         //    authenticated: true
+         //
+         // })
+            .when('/sendMail',{
 
             templateUrl: 'app/views/pages/mail/sendmail.html',
             controller:'sendMailController',
@@ -46,13 +49,15 @@ var app = angular.module('appRoutes',['ngRoute'])
             controller:'viewMailController',
             authenticated: true
 
-         }).when('/viewFinance',{
+         })
+            // .when('/viewFinance',{
+            //
+            // templateUrl: 'app/views/pages/finance/viewfinance.html',
+            // controller:'viewFinanceController',
+            // authenticated: true
 
-            templateUrl: 'app/views/pages/finance/viewfinance.html',
-            controller:'viewFinanceController',
-            authenticated: true
-
-         }).when('/allbarlist',{
+         // })
+    .when('/allbarlist',{
 
             templateUrl: 'app/views/pages/bars/allbarlist.html',
             controller:'barlistController',
@@ -85,7 +90,7 @@ var app = angular.module('appRoutes',['ngRoute'])
             .when('/logout',{
 
                 templateUrl: 'app/views/pages/users/logout.html',
-                // controller: 'regCtrl',
+                controller: 'regCtrl',
                 // controllerAs: 'register' //nickname for controller
                 authenticated: true
 
@@ -94,11 +99,19 @@ var app = angular.module('appRoutes',['ngRoute'])
             .when('/profile',{
 
                 templateUrl: 'app/views/pages/users/profile.html',
-                // controller: 'regCtrl',
+                controller: 'regCtrl',
                 // controllerAs: 'register' //nickname for controller
                 authenticated: true
 
             })
+
+            .when('/management', {
+                templateUrl: 'app/views/pages/management/management.html',
+                controller: 'managementCtrl',
+                controllerAs: 'management',
+
+            })
+
 
             .when('/policy',{
 
