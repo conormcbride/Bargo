@@ -15,6 +15,7 @@ module.exports =  function(router){
     user.password = req.body.password
     user.email = req.body.email
     user.name = req.body.name;
+   // user.temporarytoken = req.body.token || req.body.query || req.headers['x-access-token'];
     if (req.body.username == null || req.body.username =='' || req.body.password == null ||
         req.body.password =='' || req.body.email == null || req.body.email ==''|| req.body.name == null || req.body.name ==''){
         res.json({
@@ -52,7 +53,7 @@ module.exports =  function(router){
 
         }  else{
             res.json({
-                success:true, message:'User Created!'})
+                success:true, message:'Account created!'})
     }
     });
 
@@ -85,10 +86,10 @@ module.exports =  function(router){
                         message:'Could not authenticate password'
                     })
                 }else {
-                    app.token = jwt.sign({
+                    var token = jwt.sign({
                         username:user.username,
                         email:user.email
-                    }, secret, {expiresIn: '24hr'})
+                    }, secret, {expiresIn: '45s'})
                     res.json({
                         success: true,
                         message:'User authenticated',
@@ -155,6 +156,29 @@ module.exports =  function(router){
 
     router.post('/me', function (req, res) {
         res.send(req.decoded)
+    })
+
+
+
+    router.get('/renewToken/:username', function (req, res) {
+        User.findOne({ username: req.params.username }).select().exec(function (err, user) {
+            if(err)throw err;
+            if(!user){
+                res.json({ success: false, message: 'no user found' });
+            }else{
+
+                    var newToken = jwt.sign({
+                        username:user.username,
+                        email:user.email
+                    }, secret, {expiresIn: '24h'})
+                    res.json({
+                        success: true,
+                        token : newToken
+                    })
+
+            }
+            
+        })
     })
     return router; //returns route to the server when accessed
 

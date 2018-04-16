@@ -16,6 +16,11 @@ angular.module('userServices', [])
         userFactory.checkEmail = function (regData) {
             return $http.post('/api/checkemail', regData)
         }
+
+        userFactory.renewSession = function (username) {
+            return $http.get('/api/renewToken' + username)
+        }
+
         return userFactory;
     })
 

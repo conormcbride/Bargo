@@ -12,12 +12,7 @@ app.controller('addbarController', ['$scope', '$location', '$http', function($sc
         })
             .error(function(data) {
                 console.log('Error: ' + data);
-            });
-    };
-    // $scope.addBar =  function hello() {
-    //
-    //     console.log("Hello WOrld");
-    //
-    // }
 
+            });
+    }
 }]);
