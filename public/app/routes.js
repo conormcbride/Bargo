@@ -50,13 +50,13 @@ var app = angular.module('appRoutes',['ngRoute'])
             authenticated: true
 
          })
-            // .when('/viewFinance',{
-            //
-            // templateUrl: 'app/views/pages/finance/viewfinance.html',
-            // controller:'viewFinanceController',
-            // authenticated: true
+        .when('/viewFinance',{
 
-         // })
+        templateUrl: 'app/views/pages/finance/viewfinance.html',
+        controller:'viewFinanceController',
+        authenticated: true
+
+         })
     .when('/allbarlist',{
 
             templateUrl: 'app/views/pages/bars/allbarlist.html',
@@ -108,7 +108,7 @@ var app = angular.module('appRoutes',['ngRoute'])
             .when('/management', {
                 templateUrl: 'app/views/pages/management/management.html',
                 controller: 'managementCtrl',
-                controllerAs: 'management',
+                controllerAs: 'management'
 
             })
 
