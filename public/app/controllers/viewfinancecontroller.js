@@ -1,5 +1,5 @@
 var app = angular.module('viewFinanceController', [])
-app.controller('viewFinanceController', ['$scope', '$http', function($scope, $http) {
+app.controller('viewfinancecontroller', ['$scope', '$http', function($scope, $http) {
     // create a message to display in our view
     $scope.message = 'Finance List!';
 

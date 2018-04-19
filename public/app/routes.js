@@ -1,8 +1,9 @@
+
 var app = angular.module('appRoutes',['ngRoute'])
 
 
     .config(function ($routeProvider, $locationProvider) {
-
+        console.log('Testing routes file')
         $routeProvider
 
 
@@ -30,13 +31,13 @@ var app = angular.module('appRoutes',['ngRoute'])
             authenticated: true
 
          })
-         //    .when('/addFinance',{
-         //
-         //    templateUrl: 'app/views/pages/finance/addfinance.html',
-         //    controller:'financeController',
-         //    authenticated: true
-         //
-         // })
+            .when('/addFinance',{
+
+            templateUrl: 'app/views/pages/finance/addfinance.html',
+            controller:'financecontroller',
+            authenticated: true
+
+         })
             .when('/sendMail',{
 
             templateUrl: 'app/views/pages/mail/sendmail.html',
@@ -53,7 +54,7 @@ var app = angular.module('appRoutes',['ngRoute'])
         .when('/viewFinance',{
 
         templateUrl: 'app/views/pages/finance/viewfinance.html',
-        controller:'viewFinanceController',
+        controller:'financeController',
         authenticated: true
 
          })
@@ -106,7 +107,7 @@ var app = angular.module('appRoutes',['ngRoute'])
             })
 
             .when('/management', {
-                templateUrl: 'app/views/pages/management/management.html',
+                templateUrl: 'app/views/pages/management/managment.html',
                 controller: 'managementCtrl',
                 controllerAs: 'management'
 

@@ -1,6 +1,6 @@
 var app = angular.module('financeController', [])
 
-app.controller('financeController', ['$scope', '$location', '$http', function($scope, $location, $http) {
+app.controller('financecontroller', ['$scope', '$location', '$http', function($scope, $location, $http) {
 
 
 
