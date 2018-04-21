@@ -2,7 +2,7 @@ var Staff = require('../models/staff');
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/staffs');
+mongoose.connect('mongodb://admin:LXXURH6t3@ds147459.mlab.com:47459/staffs');
 
 var db = mongoose.connection;
 

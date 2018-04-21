@@ -273,6 +273,7 @@ module.exports =  function(router){
             if(!mainUser){
                 res.json({ success: false, message:'No user found'});
             }else {
+
                 if(newName){
                     if(mainUser.permission === 'admin'){
                         User.findOne({_id: editUser}, function (err, user) {

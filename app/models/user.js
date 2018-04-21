@@ -73,7 +73,7 @@ var UserSchema = new Schema({
 UserSchema.pre('save', function(next) {
     var user = this;
 
-    if (user.isModified('password')) return next();
+    // if (user.isModified('password')) return next();
     bcrypt.hash(user.password, null, null, function(err, hash) {
         if (err) return next(err);
         user.password = hash;
@@ -83,8 +83,7 @@ UserSchema.pre('save', function(next) {
 UserSchema.plugin(titlize, {
     paths: [ 'name' ]
 });
-
-UserSchema.methods.comparePassword = function (password) {
+UserSchema.methods.comparePassword = function(password) {
     return bcrypt.compareSync(password, this.password);
 };
 
