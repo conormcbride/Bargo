@@ -48,12 +48,12 @@ var usernameValidator = [
 var passwordValidator = [
     validate({
         validator: 'matches',
-        arguments: /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])(?=.*?[\W]).{5,35}$/,
+        arguments: /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])(?=.*?[\W]).{5,10000}$/,
         message:'Password Must be at least 5 characters and no more than 35, must contain at lease 1 lowercase, 1 uppercase, 1 special character'
     }),
     validate({
         validator: 'isLength',
-        arguments: [5, 35],
+        arguments: [5, 10000],
         message: 'Password should be between {ARGS[0]} and {ARGS[1]} characters'
     })
 ];
@@ -72,6 +72,8 @@ var UserSchema = new Schema({
 });
 UserSchema.pre('save', function(next) {
     var user = this;
+
+    if (user.isModified('password')) return next();
     bcrypt.hash(user.password, null, null, function(err, hash) {
         if (err) return next(err);
         user.password = hash;

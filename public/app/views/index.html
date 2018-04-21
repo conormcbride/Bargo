@@ -28,7 +28,7 @@
     <script src="app/controllers/sendMailController.js"></script>
     <script src="app/controllers/viewMailController.js"></script>
     <script src="app/controllers/financecontroller.js"></script>
-    <!--<script src="app/controllers/viewfinancecontroller.js"></script>-->
+    <script src="app/controllers/viewfinancecontroller.js"></script>
     <!--<script src="app/controllers/viewfinancecontroller.js"></script>-->
     <script src="app/controllers/managementCtrl.js"></script>
 
@@ -82,6 +82,7 @@
                 <li><a ng-show ="main.isLoggedIn" href="#" ng-click="main.logout()">Log Out</a></li>
                 <li><a ng-show ="!main.isLoggedIn" href="/login">Login</a></li>
                 <li><a ng-show ="!main.isLoggedIn" href="/register">Register</a></li>
+                <li><a ng-show ="main.isLoggedIn && main.authorized" href="/management">Management</a></li>
                 </li>
 
             </ul>

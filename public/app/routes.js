@@ -3,7 +3,7 @@ var app = angular.module('appRoutes',['ngRoute'])
 
 
     .config(function ($routeProvider, $locationProvider) {
-        console.log('Testing routes file')
+
         $routeProvider
 
 
@@ -109,7 +109,17 @@ var app = angular.module('appRoutes',['ngRoute'])
             .when('/management', {
                 templateUrl: 'app/views/pages/management/managment.html',
                 controller: 'managementCtrl',
-                controllerAs: 'management'
+                controllerAs: 'management',
+                authenticated: true,
+                permission: ['admin']
+
+            })
+            .when('/edit/:id', {
+                templateUrl: 'app/views/pages/management/edit.html',
+                controller: 'editCtrl',
+                controllerAs: 'edit',
+                authenticated: true,
+                permission: ['admin']
 
             })
 
@@ -191,7 +201,7 @@ var app = angular.module('appRoutes',['ngRoute'])
 
     })
 
-app.run(['$rootScope', 'Auth', '$location' ,function ($rootScope, Auth, $location) {
+app.run(['$rootScope', 'Auth', '$location', 'User' ,function ($rootScope, Auth, $location, User) {
     $rootScope.$on('$routeChangeStart', function (event, next, current) {
         if (next.$$route !== undefined) {
 
@@ -199,6 +209,14 @@ app.run(['$rootScope', 'Auth', '$location' ,function ($rootScope, Auth, $locatio
                 if (!Auth.isLoggedIn()) {
                     event.preventDefault();
                     $location.path('/')
+                }else if(next.$$route.permission){
+                    User.getPermission().then(function (data) {
+                       if(next.$$route.permission[0] !== data.data.permission){
+                           event.preventDefault();
+                           $location.path('/')
+                       }
+                    })
+                    
                 }
 
             } else if (next.$$route.authenticated == false) {

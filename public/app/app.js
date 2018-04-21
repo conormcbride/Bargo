@@ -7,7 +7,4 @@ angular.module('userApp',['appRoutes','addstaffController','addbarController','s
 .config(function ($httpProvider) {
     $httpProvider.interceptors.push('AuthInterceptors');
 
-})
-
-// 'viewFinanceController',
-// 'financeController',
+});

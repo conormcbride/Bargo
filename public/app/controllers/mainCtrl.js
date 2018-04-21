@@ -20,18 +20,18 @@ angular.module('mainController', ['authServices', 'userServices'])
                     }
                     var expireTime = self.parseJwt(token);
                     var timeStamp = Math.floor(Date.now()/1000);
-                    console.log(expireTime.exp)
-                    console.log(timeStamp)
+                    // console.log(expireTime.exp)
+                    // console.log(timeStamp)
 
                     var timeCheck = expireTime.exp - timeStamp;
-                    console.log('time check' +timeCheck)
+                    // console.log('time check' +timeCheck)
 
                     if(timeCheck <= 15){
                         $interval.cancel(interval)
                         showModel(1);
-                        console.log('Token is expired')
+                        // console.log('Token is expired')
                     }else{
-                        console.log('Token not expired')
+                        // console.log('Token not expired')
                     }
                 }
             }, 2000 )
@@ -103,9 +103,17 @@ angular.module('mainController', ['authServices', 'userServices'])
             app.isLoggedIn   = true;
             Auth.getUser().then(function (data) {
                 // console.log(data.data.username)
-                app.username=data.data.username
-                app.useremail=data.data.email
-                app.loadme = true;
+                app.username=data.data.username;
+                app.useremail=data.data.email;
+                User.getPermission().then(function (data) {
+                   if(data.data.permission === 'admin') {
+                       app.authorized = true;
+                       app.loadme = true;
+                   }else{
+
+                       app.loadme = true;
+                   }
+                });
             })
         }
         else {

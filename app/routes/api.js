@@ -89,7 +89,7 @@ module.exports =  function(router){
                     var token = jwt.sign({
                         username:user.username,
                         email:user.email
-                    }, secret, {expiresIn: '45s'})
+                    }, secret, {expiresIn: '1h'});
                     res.json({
                         success: true,
                         message:'User authenticated',
@@ -170,7 +170,7 @@ module.exports =  function(router){
                     var newToken = jwt.sign({
                         username:user.username,
                         email:user.email
-                    }, secret, {expiresIn: '24h'})
+                    }, secret, {expiresIn: '15m'})
                     res.json({
                         success: true,
                         token : newToken
@@ -179,7 +179,187 @@ module.exports =  function(router){
             }
             
         })
+    });
+
+    router.get('/permission', function (req,res) {
+        User.findOne({username: req.decoded.username}, function (err, user) {
+            if(err) throw err;
+            if(!user){
+                res.json({ success: false, message:'No user found'});
+            }else{
+                res.json({ success: true, permission: user.permission});
+            }
+        })
     })
+
+    router.get('/management', function(req, res){
+
+        User.find({}, function (err, users) {
+            if(err) throw err;
+            User.findOne({username: req.decoded.username}, function (err, mainUser) {
+                if(err) throw err;
+                if(!mainUser){
+                    res.json({ success: false, message:'No user found'});
+                }else{
+                    if(mainUser.permission === 'admin'){
+                        if(!users){
+                            res.json({ success: false, message:'No users found'});
+                        }else{
+                            res.json({ success: true, users: users, permission: mainUser.permission});
+                        }
+
+                    }else{
+                        res.json({ success: false, message:'Not proper permissions'});
+                }
+                }
+            })
+        })
+    });
+
+    router.delete('/management/:username', function (req, res){
+        var deletedUser = req.params.username;
+        User.findOne({ username: req.decoded.username},function (err, mainUser) {
+            if(err) throw err;
+            if(!mainUser){
+                res.json({ success: false, message:'No user found'});
+            }else{
+                if(mainUser.permission != 'admin'){
+                    res.json({ success: false, message:'Not proper permissions'});
+                }else{
+                    User.findOneAndRemove({username: deletedUser}, function (err, mainUser){
+                        if(err) throw err;
+                        res.json({ success: true})
+                    })
+                }
+            }
+            
+        })
+    });
+
+    router.get('/edit/:id', function (req, res) {
+        var editUser = req.params.id;
+
+        User.findOne({ username: req.decoded.username},function (err, mainUser) {
+            if(err) throw err;
+            if(!mainUser){
+                res.json({ success: false, message:'No user found'});
+            }else {
+                if (mainUser.permission === 'admin') {
+                    User.findOne({_id: editUser}, function (err, user) {
+                        if (err) throw err;
+                        if (!user) {
+                            res.json({ success: false, message:'No user found'});
+                        }else{
+                            res.json({ success: true, user: user});
+                        }
+                    })
+
+                } else {
+                    res.json({success: false, message: 'Not proper permissions'});
+                }
+            }
+        })
+    });
+    
+    router.put('/edit', function (req, res) {
+        var editUser = req.body._id;
+        if(req.body.name) var newName = req.body.name;
+        if(req.body.username) var newUsername = req.body.username;
+        if(req.body.email) var newEmail = req.body.email;
+        if(req.body.permission) var newPermission = req.body.permission;
+
+        User.findOne({ username: req.decoded.username},function (err, mainUser) {
+            if(err) throw err;
+            if(!mainUser){
+                res.json({ success: false, message:'No user found'});
+            }else {
+                if(newName){
+                    if(mainUser.permission === 'admin'){
+                        User.findOne({_id: editUser}, function (err, user) {
+                            if(err) throw err;
+                            if(!user){
+                                res.json({ success: false, message:'No user found'});
+                            }else{
+                                user.name = newName;
+                                user.save(function (err) {
+                                    if(err){
+                                        console.log(err);
+                                    }else{
+                                        res.json({ success: true, message:'Name updated!'});
+                                    }
+                                })
+                            }
+                        })
+                    }else {
+                        res.json({success: false, message: 'Not proper permissions'});
+                    }
+                }
+                if(newUsername){
+                    if(mainUser.permission === 'admin'){
+                        User.findOne({_id: editUser}, function (err, user) {
+                            if(err) throw err;
+                            if(!user){
+                                res.json({ success: false, message:'No user found'});
+                            }else{
+                                user.username = newUsername;
+                                user.save(function (err) {
+                                    if(err){
+                                        console.log(err);
+                                    }else{
+                                        res.json({ success: true, message:'username updated!'});
+                                    }
+                                })
+                            }
+                        })
+                    }else{
+                        res.json({success: false, message: 'Not proper permissions'});
+                    }
+                }
+                if(newEmail){
+                    if(mainUser.permission === 'admin'){
+                        User.findOne({_id: editUser}, function (err, user) {
+                            if(err) throw err;
+                            if(!user){
+                                res.json({ success: false, message:'No user found'});
+                            }else{
+                                user.email = newEmail;
+                                user.save(function (err) {
+                                    if(err){
+                                        console.log(err);
+                                    }else{
+                                        res.json({ success: true, message:'Email updated!'});
+                                    }
+                                })
+                            }
+                        })
+                    }else{
+                        res.json({success: false, message: 'Not proper permissions'});
+                    }
+                }
+                if(newPermission){
+                    if(mainUser.permission === 'admin'){
+                        User.findOne({_id: editUser}, function (err, user) {
+                            if(err) throw err;
+                            if(!user){
+                                res.json({ success: false, message:'No user found'});
+                            }else{
+                                user.permission = newPermission;
+                                user.save(function (err) {
+                                    if(err){
+                                        console.log(err);
+                                    }else{
+                                        res.json({ success: true, message:'Permission updated!'});
+                                    }
+                                })
+                            }
+                        })
+                    }else{
+                        res.json({success: false, message: 'Not proper permissions'});
+                    }
+                }
+            }
+        })
+    });
     return router; //returns route to the server when accessed
 
-}
+};
