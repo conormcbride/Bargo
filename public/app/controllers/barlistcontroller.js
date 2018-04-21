@@ -1,5 +1,6 @@
-var app = angular.module('barlistcontroller', [])
-app.controller('barlistController', ['$scope', '$http', function($scope, $http) {
+angular.module('barlistcontroller', [])
+
+.controller('barlistcontroller',['$scope', '$http', function($scope, $http) {
     // create a message to display in our view
     $scope.message = 'Bar List!';
 
