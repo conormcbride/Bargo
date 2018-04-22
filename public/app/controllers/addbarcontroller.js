@@ -1,7 +1,6 @@
-var app = angular.module('addbarController', [])
+angular.module('addbarController', [])
 
-app.controller('addbarController', ['$scope', '$location', '$http', function($scope, $location, $http) {
-
+.controller('managementCtrl', function ($scope, $location, $http) {
 
 
     $scope.addBar = function(newBar){
@@ -15,4 +14,4 @@ app.controller('addbarController', ['$scope', '$location', '$http', function($sc
 
             });
     }
-}]);
+});
