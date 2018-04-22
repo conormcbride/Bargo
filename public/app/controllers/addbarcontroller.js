@@ -1,6 +1,6 @@
 angular.module('addbarController', [])
 
-.controller('managementCtrl', function ($scope, $location, $http) {
+.controller('addbarController', function ($scope, $location, $http) {
 
 
     $scope.addBar = function(newBar){
