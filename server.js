@@ -30,7 +30,10 @@ app.use(bodyParser.urlencoded({
 }))
 app.use(express.static(__dirname+ '/public'))//give frontend access to the public folder
 app.use('/api', appRoutes);// defining backend routes to differentiate from frontend routes to avoid nameing conflictions
-
+app.use(express.static('build'));
+router.get('/', function(req, res) {
+    res.sendfile('./public/index.html');
+});
 
 app.delete('/staff/:id', staff.deleteStaff);
 app.get('/staff/:id', staff.findOne);
