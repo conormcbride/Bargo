@@ -28,12 +28,14 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
     extended: true
 }))
-app.use(express.static(__dirname+ '/public'))//give frontend access to the public folder
+app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(__dirname+ '/public'))//give frontend access to the public folder
 app.use('/api', appRoutes);// defining backend routes to differentiate from frontend routes to avoid nameing conflictions
-app.use(express.static('build'));
-router.get('/', function(req, res) {
-    res.sendfile('./public/index.html');
-});
+// app.use(express.static('build'));
+// app.get('*',function(req,res){
+//     res.sendFile(path.join(__dirname+'/build/index.html'));
+//     //__dirname : It will resolve to your project folder.
+// });
 
 app.delete('/staff/:id', staff.deleteStaff);
 app.get('/staff/:id', staff.findOne);
