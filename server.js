@@ -60,15 +60,15 @@ app.delete('/mail/:id', mail.deleteMail)
 app.get('/finance', finance.findAll);
 app.post('/finance', finance.newFinance);
 
-
-mongoose.connect('mongodb://localhost:27017/managementdb', function(err){
-    if (err){
-        console.log('Not connected to the db' + err)
-    } else {
-        console.log('Successfully Connected to the db')
-
-    }
-});
+//
+// mongoose.connect('mongodb://localhost:27017/managementdb', function(err){
+//     if (err){
+//         console.log('Not connected to the db' + err)
+//     } else {
+//         console.log('Successfully Connected to the db')
+//
+//     }
+// });
 
 
 app.get('*',function (req,res) {
