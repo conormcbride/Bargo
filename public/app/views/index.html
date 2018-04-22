@@ -42,39 +42,55 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/animate.css">
 
     <title>Bar manager</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!--        <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">-->
 
+
+    <!--For Plugins external css-->
+    <link rel="stylesheet" href="assets/css/plugins.css" />
+    <link rel="stylesheet" href="assets/css/lora-web-font.css" />
+    <link rel="stylesheet" href="assets/css/opensans-web-font.css" />
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+
+    <!--Theme custom css -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!--Theme Responsive css-->
+    <link rel="stylesheet" href="assets/css/responsive.css" />
+
+    <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 </head>
 
-<body ng-app="userApp" ng-controller="mainCtrl as main" ng-show="main.loadme" ng-cloak>
 
-<nav class="navbar navbar-inverse navbar fixed-top">
-    <div class ="container">
+<body ng-app="userApp" ng-controller="mainCtrl as main" ng-show="main.loadme" ng-cloak data-spy="scroll" data-target="#main_navbar">
+<div class='preloader'><div class='loaded'>&nbsp;</div></div>
+<nav class="navbar navbar-default navbar-fixed-top" id="main_navbar">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="#navbar" aria-controls="navbar">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
+            <!--<a class="navbar-brand" href="index.html"><img src="assets/images/logo.png" alt="logo" /></a>-->
         </div>
-        <div id="'navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li><a ng-show ="main.isLoggedIn" href="/profile"> Hello {{main.username}} </a> </li>
-                <li><a href="/">Home</a></li>
-
-
-
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a ng-show ="main.isLoggedIn" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bar<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="/addBar">Add a Bar</a></li>
                         <li><a href="/allbarlist">List of Bars</a></li>
                     </ul> <li class="dropdown">
-                    <a ng-show ="main.isLoggedIn" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Staff<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/addStaff">Add a staff member</a></li>
-                        <li><a href="/allstafflist">List of staff members</a></li>
-                    </ul>
+                <a ng-show ="main.isLoggedIn" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Staff<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/addStaff">Add a staff member</a></li>
+                    <li><a href="/allstafflist">List of staff members</a></li>
+                </ul>
+
                 <li><a ng-show ="main.isLoggedIn" href="/sendMail"> Send Mail</a></li>
                 <li><a ng-show ="main.isLoggedIn" href="/viewMail"> View Mail</a></li>
                 <li><a ng-show ="main.isLoggedIn" href="/addFinance"> New Finance</a></li>
@@ -84,11 +100,57 @@
                 <li><a ng-show ="!main.isLoggedIn" href="/register">Register</a></li>
                 <li><a ng-show ="main.isLoggedIn && main.authorized" href="/management">Management</a></li>
 
-
             </ul>
-        </div>
-    </div>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
 </nav>
+
+<!--<body ng-app="userApp" ng-controller="mainCtrl as main" ng-show="main.loadme" ng-cloak>-->
+<!--<div id="wrapper">-->
+
+
+<!--<nav class="navbar navbar-inverse navbar fixed-top">-->
+    <!--<div class ="container">-->
+        <!--<div class="navbar-header">-->
+            <!--<button type="button" class="navbar-toggle collapsed" data-toggle="#navbar" aria-controls="navbar">-->
+                <!--<span class="sr-only">Toggle navigation</span>-->
+                <!--<span class="icon-bar"></span>-->
+                <!--<span class="icon-bar"></span>-->
+                <!--<span class="icon-bar"></span>-->
+            <!--</button>-->
+        <!--</div>-->
+        <!--<div id="'navbar" class="navbar-collapse collapse">-->
+            <!--<ul class="nav navbar-nav">-->
+                <!--<li><a ng-show ="main.isLoggedIn" href="/profile"> Hello {{main.username}} </a> </li>-->
+                <!--<li><a href="/">Home</a></li>-->
+
+
+
+                <!--<li class="dropdown">-->
+                    <!--<a ng-show ="main.isLoggedIn" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bar<span class="caret"></span></a>-->
+                    <!--<ul class="dropdown-menu">-->
+                        <!--<li><a href="/addBar">Add a Bar</a></li>-->
+                        <!--<li><a href="/allbarlist">List of Bars</a></li>-->
+                    <!--</ul> <li class="dropdown">-->
+                    <!--<a ng-show ="main.isLoggedIn" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Staff<span class="caret"></span></a>-->
+                    <!--<ul class="dropdown-menu">-->
+                        <!--<li><a href="/addStaff">Add a staff member</a></li>-->
+                        <!--<li><a href="/allstafflist">List of staff members</a></li>-->
+                    <!--</ul>-->
+                <!--<li><a ng-show ="main.isLoggedIn" href="/sendMail"> Send Mail</a></li>-->
+                <!--<li><a ng-show ="main.isLoggedIn" href="/viewMail"> View Mail</a></li>-->
+                <!--<li><a ng-show ="main.isLoggedIn" href="/addFinance"> New Finance</a></li>-->
+                <!--<li><a ng-show ="main.isLoggedIn" href="/viewFinance"> View Finance</a></li>-->
+                <!--<li><a ng-show ="main.isLoggedIn" href="#" ng-click="main.logout()">Log Out</a></li>-->
+                <!--<li><a ng-show ="!main.isLoggedIn" href="/login">Login</a></li>-->
+                <!--<li><a ng-show ="!main.isLoggedIn" href="/register">Register</a></li>-->
+                <!--<li><a ng-show ="main.isLoggedIn && main.authorized" href="/management">Management</a></li>-->
+
+
+            <!--</ul>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</nav>-->
 <header id="header"></header>
 <div class ="container theme-showcase" role="main">
 
@@ -126,8 +188,12 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="assets/js/jquery-3.1.1.min.js"></script>
-<script src="assets/js/bootstrap.js"></script>
+<script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
+<script src="assets/js/vendor/bootstrap.min.js"></script>
+<script src="assets/js/vendor/isotope.min.js"></script>
+<script src="assets/js/plugins.js"></script>
+<script src="assets/js/jquery.magnific-popup.js"></script>
+<script src="assets/js/main.js"></script>
 </body>
 
 </html>

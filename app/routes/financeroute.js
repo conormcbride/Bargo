@@ -28,7 +28,7 @@ router.newFinance = function(req, res) {
     finance.income = req.body.income;
     finance.expenditure = req.body.expenditure;
     finance.barName = req.body.barName;
-    //finance.profit = req.body.income - req.body.expenditure;
+    finance.profit = req.body.income - req.body.expenditure;
 
     console.log('Adding finance: ' + JSON.stringify(Finance));
 
