@@ -84,7 +84,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a ng-show="main.isLoggedIn && main.authorized" href="#" class="dropdown-toggle"
+                    <a ng-show="main.isLoggedIn" href="#" class="dropdown-toggle"
                        data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bar<span
                             class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -102,12 +102,12 @@
                 <!--<li><a href="/allstafflist">List of staff members</a></li>-->
                 <!--</ul>-->
                 <li class="dropdown">
-                    <a ng-show="main.isLoggedIn && main.authorized" href="#" class="dropdown-toggle"
+                    <a ng-show="main.isLoggedIn " href="#" class="dropdown-toggle"
                        data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Messages<span
                             class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a ng-show="main.isLoggedIn && main.authorized" href="/sendMail"> Send A Message</a></li>
-                        <li><a ng-show="main.isLoggedIn && main.authorized" href="/viewMail"> View Messages</a></li>
+                        <li><a ng-show="main.isLoggedIn " href="/sendMail"> Send A Message</a></li>
+                        <li><a ng-show="main.isLoggedIn " href="/viewMail"> View Messages</a></li>
                     </ul>
                 <!--</li>-->
                 <!--<li class="dropdown">-->
@@ -119,7 +119,7 @@
                         <!--<li><a ng-show="main.isLoggedIn && main.authorized" href="/viewFinance"> View Finance</a></li>-->
                     <!--</ul>-->
                 </li>
-                <li><a ng-show="main.isLoggedIn && main.authorized" href="#" ng-click="main.logout()">Log Out</a></li>
+                <li><a ng-show="main.isLoggedIn" href="#" ng-click="main.logout()">Log Out</a></li>
                 <li><a ng-show="!main.isLoggedIn" href="/login">Login</a></li>
                 <li><a ng-show="!main.isLoggedIn" href="/register">Register</a></li>
 
