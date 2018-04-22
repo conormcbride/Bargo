@@ -28,7 +28,7 @@ router.addBar = function(req, res) {
 
     bar.barName = req.body.barName;
     bar.location = req.body.location;
-    bar.earnings = req.body.earnings;
+    // bar.earnings = req.body.earnings;
 
     console.log('Adding bar: ' + JSON.stringify(Bar));
 
@@ -50,21 +50,21 @@ router.deleteBar = function(req, res) {
     });
 }
 
-router.updateBarEarnings = function(req, res) {
-
-    Bar.findById(req.params.id, function(err,bar) {
-        if (err)
-            res.send(err);
-        else {
-            bar.earnings =+ req.body.earnings;
-            bar.save(function (err) {
-                if (err)
-                    res.send(err);
-                else
-                    res.json({ message: 'Bar '+bar.barName+' earnings have been updated!', data: bar });
-            });
-        }
-    })
-}
+// router.updateBarEarnings = function(req, res) {
+//
+//     Bar.findById(req.params.id, function(err,bar) {
+//         if (err)
+//             res.send(err);
+//         else {
+//             bar.earnings =+ req.body.earnings;
+//             bar.save(function (err) {
+//                 if (err)
+//                     res.send(err);
+//                 else
+//                     res.json({ message: 'Bar '+bar.barName+' earnings have been updated!', data: bar });
+//             });
+//         }
+//     })
+// }
 
 module.exports = router;

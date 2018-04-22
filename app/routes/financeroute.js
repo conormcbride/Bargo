@@ -39,44 +39,7 @@ router.newFinance = function(req, res) {
 
         res.json({ message: 'Finance  Added!', data: Finance });
     });
-}
-// router.calculateProfit = function(req, res){
-//
-//     var profit = income - expenditure;
-//
-//     if(income == 0 || expenditure == 0) {
-//
-//         res.send(err)
-//
-//     }else{
-//         res.send(profit)
-//     }
-// }
+};
 
-// router.deleteBar = function(req, res) {
-//     Bar.findByIdAndRemove(req.params.id, function(err) {
-//         if (err)
-//             res.send(err);
-//         else
-//             res.json({ message: 'Bar Deleted!'});
-//     });
-// }
-
-// router.updateBarEarnings = function(req, res) {
-//
-//     Bar.findById(req.params.id, function(err,bar) {
-//         if (err)
-//             res.send(err);
-//         else {
-//             bar.earnings =+ req.body.earnings;
-//             bar.save(function (err) {
-//                 if (err)
-//                     res.send(err);
-//                 else
-//                     res.json({ message: 'Bar '+bar.barName+' earnings have been updated!', data: bar });
-//             });
-//         }
-//     })
-// }
 
 module.exports = router;

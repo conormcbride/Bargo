@@ -47,28 +47,32 @@
 
 
     <!--For Plugins external css-->
-    <link rel="stylesheet" href="assets/css/plugins.css" />
-    <link rel="stylesheet" href="assets/css/lora-web-font.css" />
-    <link rel="stylesheet" href="assets/css/opensans-web-font.css" />
+    <link rel="stylesheet" href="assets/css/plugins.css"/>
+    <link rel="stylesheet" href="assets/css/lora-web-font.css"/>
+    <link rel="stylesheet" href="assets/css/opensans-web-font.css"/>
     <link rel="stylesheet" href="assets/css/magnific-popup.css">
 
     <!--Theme custom css -->
     <link rel="stylesheet" href="assets/css/style.css">
 
     <!--Theme Responsive css-->
-    <link rel="stylesheet" href="assets/css/responsive.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css"/>
 
     <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 </head>
 
 
-<body ng-app="userApp" ng-controller="mainCtrl as main" ng-show="main.loadme" ng-cloak data-spy="scroll" data-target="#main_navbar">
-<div class='preloader'><div class='loaded'>&nbsp;</div></div>
+<body ng-app="userApp" ng-controller="mainCtrl as main" ng-show="main.loadme" ng-cloak data-spy="scroll"
+      data-target="#main_navbar">
+<div class='preloader'>
+    <div class='loaded'>&nbsp;</div>
+</div>
 <nav class="navbar navbar-default navbar-fixed-top" id="main_navbar">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -80,25 +84,44 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a ng-show ="main.isLoggedIn" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bar<span class="caret"></span></a>
+                    <a ng-show="main.isLoggedIn && main.authorized" href="#" class="dropdown-toggle"
+                       data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bar<span
+                            class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="/addBar">Add a Bar</a></li>
                         <li><a href="/allbarlist">List of Bars</a></li>
-                    </ul> <li class="dropdown">
-                <a ng-show ="main.isLoggedIn" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Staff<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="/addStaff">Add a staff member</a></li>
-                    <li><a href="/allstafflist">List of staff members</a></li>
-                </ul>
+                    </ul>
+                </li>
 
-                <li><a ng-show ="main.isLoggedIn" href="/sendMail"> Send Mail</a></li>
-                <li><a ng-show ="main.isLoggedIn" href="/viewMail"> View Mail</a></li>
-                <li><a ng-show ="main.isLoggedIn" href="/addFinance"> New Finance</a></li>
-                <li><a ng-show ="main.isLoggedIn" href="/viewFinance"> View Finance</a></li>
-                <li><a ng-show ="main.isLoggedIn" href="#" ng-click="main.logout()">Log Out</a></li>
-                <li><a ng-show ="!main.isLoggedIn" href="/login">Login</a></li>
-                <li><a ng-show ="!main.isLoggedIn" href="/register">Register</a></li>
-                <li><a ng-show ="main.isLoggedIn && main.authorized" href="/management">Management</a></li>
+                <li><a ng-show="main.isLoggedIn && main.authorized" href="/management">Management</a></li>
+                <!--<li class="dropdown">-->
+
+                <!--<a ng-show ="main.isLoggedIn" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Staff<span class="caret"></span></a>-->
+                <!--<ul class="dropdown-menu">-->
+                <!--<li><a href="/addStaff">Add a staff member</a></li>-->
+                <!--<li><a href="/allstafflist">List of staff members</a></li>-->
+                <!--</ul>-->
+                <li class="dropdown">
+                    <a ng-show="main.isLoggedIn && main.authorized" href="#" class="dropdown-toggle"
+                       data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Messages<span
+                            class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a ng-show="main.isLoggedIn && main.authorized" href="/sendMail"> Send A Message</a></li>
+                        <li><a ng-show="main.isLoggedIn && main.authorized" href="/viewMail"> View Messages</a></li>
+                    </ul>
+                <!--</li>-->
+                <!--<li class="dropdown">-->
+                    <!--<a ng-show="main.isLoggedIn && main.authorized" href="#" class="dropdown-toggle"-->
+                       <!--data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Finance<span-->
+                            <!--class="caret"></span></a>-->
+                    <!--<ul class="dropdown-menu">-->
+                        <!--<li><a ng-show="main.isLoggedIn && main.authorized" href="/addFinance"> Add  New Finance</a></li>-->
+                        <!--<li><a ng-show="main.isLoggedIn && main.authorized" href="/viewFinance"> View Finance</a></li>-->
+                    <!--</ul>-->
+                </li>
+                <li><a ng-show="main.isLoggedIn && main.authorized" href="#" ng-click="main.logout()">Log Out</a></li>
+                <li><a ng-show="!main.isLoggedIn" href="/login">Login</a></li>
+                <li><a ng-show="!main.isLoggedIn" href="/register">Register</a></li>
 
             </ul>
         </div><!-- /.navbar-collapse -->
@@ -110,78 +133,82 @@
 
 
 <!--<nav class="navbar navbar-inverse navbar fixed-top">-->
-    <!--<div class ="container">-->
-        <!--<div class="navbar-header">-->
-            <!--<button type="button" class="navbar-toggle collapsed" data-toggle="#navbar" aria-controls="navbar">-->
-                <!--<span class="sr-only">Toggle navigation</span>-->
-                <!--<span class="icon-bar"></span>-->
-                <!--<span class="icon-bar"></span>-->
-                <!--<span class="icon-bar"></span>-->
-            <!--</button>-->
-        <!--</div>-->
-        <!--<div id="'navbar" class="navbar-collapse collapse">-->
-            <!--<ul class="nav navbar-nav">-->
-                <!--<li><a ng-show ="main.isLoggedIn" href="/profile"> Hello {{main.username}} </a> </li>-->
-                <!--<li><a href="/">Home</a></li>-->
+<!--<div class ="container">-->
+<!--<div class="navbar-header">-->
+<!--<button type="button" class="navbar-toggle collapsed" data-toggle="#navbar" aria-controls="navbar">-->
+<!--<span class="sr-only">Toggle navigation</span>-->
+<!--<span class="icon-bar"></span>-->
+<!--<span class="icon-bar"></span>-->
+<!--<span class="icon-bar"></span>-->
+<!--</button>-->
+<!--</div>-->
+<!--<div id="'navbar" class="navbar-collapse collapse">-->
+<!--<ul class="nav navbar-nav">-->
+<!--<li><a ng-show ="main.isLoggedIn" href="/profile"> Hello {{main.username}} </a> </li>-->
+<!--<li><a href="/">Home</a></li>-->
 
 
+<!--<li class="dropdown">-->
+<!--<a ng-show ="main.isLoggedIn" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bar<span class="caret"></span></a>-->
+<!--<ul class="dropdown-menu">-->
+<!--<li><a href="/addBar">Add a Bar</a></li>-->
+<!--<li><a href="/allbarlist">List of Bars</a></li>-->
+<!--</ul> <li class="dropdown">-->
+<!--<a ng-show ="main.isLoggedIn" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Staff<span class="caret"></span></a>-->
+<!--<ul class="dropdown-menu">-->
+<!--<li><a href="/addStaff">Add a staff member</a></li>-->
+<!--<li><a href="/allstafflist">List of staff members</a></li>-->
+<!--</ul>-->
+<!--<li><a ng-show ="main.isLoggedIn" href="/sendMail"> Send Mail</a></li>-->
+<!--<li><a ng-show ="main.isLoggedIn" href="/viewMail"> View Mail</a></li>-->
+<!--<li><a ng-show ="main.isLoggedIn" href="/addFinance"> New Finance</a></li>-->
+<!--<li><a ng-show ="main.isLoggedIn" href="/viewFinance"> View Finance</a></li>-->
+<!--<li><a ng-show ="main.isLoggedIn" href="#" ng-click="main.logout()">Log Out</a></li>-->
+<!--<li><a ng-show ="!main.isLoggedIn" href="/login">Login</a></li>-->
+<!--<li><a ng-show ="!main.isLoggedIn" href="/register">Register</a></li>-->
+<!--<li><a ng-show ="main.isLoggedIn && main.authorized" href="/management">Management</a></li>-->
 
-                <!--<li class="dropdown">-->
-                    <!--<a ng-show ="main.isLoggedIn" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bar<span class="caret"></span></a>-->
-                    <!--<ul class="dropdown-menu">-->
-                        <!--<li><a href="/addBar">Add a Bar</a></li>-->
-                        <!--<li><a href="/allbarlist">List of Bars</a></li>-->
-                    <!--</ul> <li class="dropdown">-->
-                    <!--<a ng-show ="main.isLoggedIn" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Staff<span class="caret"></span></a>-->
-                    <!--<ul class="dropdown-menu">-->
-                        <!--<li><a href="/addStaff">Add a staff member</a></li>-->
-                        <!--<li><a href="/allstafflist">List of staff members</a></li>-->
-                    <!--</ul>-->
-                <!--<li><a ng-show ="main.isLoggedIn" href="/sendMail"> Send Mail</a></li>-->
-                <!--<li><a ng-show ="main.isLoggedIn" href="/viewMail"> View Mail</a></li>-->
-                <!--<li><a ng-show ="main.isLoggedIn" href="/addFinance"> New Finance</a></li>-->
-                <!--<li><a ng-show ="main.isLoggedIn" href="/viewFinance"> View Finance</a></li>-->
-                <!--<li><a ng-show ="main.isLoggedIn" href="#" ng-click="main.logout()">Log Out</a></li>-->
-                <!--<li><a ng-show ="!main.isLoggedIn" href="/login">Login</a></li>-->
-                <!--<li><a ng-show ="!main.isLoggedIn" href="/register">Register</a></li>-->
-                <!--<li><a ng-show ="main.isLoggedIn && main.authorized" href="/management">Management</a></li>-->
 
-
-            <!--</ul>-->
-        <!--</div>-->
-    <!--</div>-->
+<!--</ul>-->
+<!--</div>-->
+<!--</div>-->
 <!--</nav>-->
 <header id="header"></header>
-<div class ="container theme-showcase" role="main">
+<div class="container theme-showcase" role="main">
 
 
     <div ng-view></div>
 
 
-        <!-- Modal -->
-        <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog">
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
 
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" ng-click="main.endSession()" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">{{ main.modelHeader }}</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p>{{ main.modelBody }}</p>
-                        <div ng-show="main.hideButton" class="dizzy-gillespie"></div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" ng-hide='main.hideButton' ng-click="main.renewSession()" class="btn btn-primary" data-dismiss="modal">Yes</button>
-                        <button type="button" ng-hide='main.hideButton' ng-click="main.endSession()" class="btn btn-danger" data-dismiss="modal">No</button>
-                    </div>
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" ng-click="main.endSession()" class="close" data-dismiss="modal">&times;
+                    </button>
+                    <h4 class="modal-title">{{ main.modelHeader }}</h4>
                 </div>
-
+                <div class="modal-body">
+                    <p>{{ main.modelBody }}</p>
+                    <!--<div ng-show="main.hideButton" class="dizzy-gillespie"></div>-->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" ng-hide='main.hideButton' ng-click="main.renewSession()"
+                            class="btn btn-primary" data-dismiss="modal">Yes
+                    </button>
+                    <button type="button" ng-hide='main.hideButton' ng-click="main.endSession()" class="btn btn-danger"
+                            data-dismiss="modal">No
+                    </button>
+                </div>
             </div>
-        </div>
 
+        </div>
     </div>
+
+</div>
 
 <!-- BootstrapJS Modal -->
 

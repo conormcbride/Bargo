@@ -89,7 +89,7 @@ module.exports =  function(router){
                     var token = jwt.sign({
                         username:user.username,
                         email:user.email
-                    }, secret, {expiresIn: '1h'});
+                    }, secret, {expiresIn: '24h'});
                     res.json({
                         success: true,
                         message:'User authenticated',

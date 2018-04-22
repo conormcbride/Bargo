@@ -68,7 +68,7 @@ angular.module('mainController', ['authServices', 'userServices'])
 
         }, 4000)
     }
-    
+
     app.renewSession = function () {
         app.choice = true;
         User.renewSession(app.username).then(function (data) {
@@ -79,7 +79,7 @@ angular.module('mainController', ['authServices', 'userServices'])
                 app.modelBody = data.data.message;
             }
 
-        })
+        });
         hideModal();
     };
 

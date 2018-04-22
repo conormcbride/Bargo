@@ -54,14 +54,14 @@ var app = angular.module('appRoutes',['ngRoute'])
         .when('/viewFinance',{
 
         templateUrl: 'app/views/pages/finance/viewfinance.html',
-        controller:'financeController',
+        controller:'viewFinanceController',
         authenticated: true
 
          })
     .when('/allbarlist',{
 
             templateUrl: 'app/views/pages/bars/allbarlist.html',
-            controller:'barlistController',
+            controller:'barlistcontroller',
             //controllerAs: 'barlist', //nickname for controller
             authenticated: true
 

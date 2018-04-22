@@ -49,16 +49,16 @@ app.delete('/bar/:id', bar.deleteBar);
 app.get('/bar/:id', bar.findOne);
 app.get('/bar', bar.findAll);
 app.post('/bar', bar.addBar);
-app.put('/bar/:id/update', bar.updateBarEarnings);
+// app.put('/bar/:id/update', bar.updateBarEarnings);
 
 app.get('/mail', mail.findAll);
 app.post('/mail', mail.addMail);
 app.delete('/mail/:id', mail.deleteMail)
 
 
-
-app.get('/finance', finance.findAll);
-app.post('/finance', finance.newFinance);
+//
+// app.get('/newFinance', finance.findAll);
+// app.post('/finance', finance.newFinance);
 
 //
 // mongoose.connect('mongodb://localhost:27017/managementdb', function(err){
